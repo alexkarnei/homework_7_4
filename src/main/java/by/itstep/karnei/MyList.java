@@ -13,8 +13,25 @@ public interface MyList<E> extends Iterable<E> {
     boolean insert(E element, int index);
 
     boolean removeAt(int index);
+
     boolean remove(E element);
+
     void removeAll(E element);
+
     void popBack();
+
     void clear();
+
+    boolean isEmphty();
+
+    void trimToSize();
+
+    int indexOf(E element);
+
+    int lastIndexOf(E element);
+
+    void reverse();
+
+    void shuffle();
+
 }
