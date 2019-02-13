@@ -6,6 +6,8 @@ public interface MyList<E> extends Iterable<E> {
 
     int getSize();
 
+    String toString();
+
     boolean popFront();
 
     boolean pushFront(E element);
@@ -33,5 +35,7 @@ public interface MyList<E> extends Iterable<E> {
     void reverse();
 
     void shuffle();
+
+    boolean equals(Object obj);
 
 }

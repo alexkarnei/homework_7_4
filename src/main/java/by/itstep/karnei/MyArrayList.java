@@ -20,16 +20,17 @@ public class MyArrayList<E> implements MyList<E> {
     /**
      * Current number of existing array elements
      */
-    private static int size = 0;
+    private  int size;
 
 
     /**
      * Constructor with an int parameter. Specifies the initial capacity
      * array. Accepts one parameter (sets capacity),
      * allocates memory for an array (size = 0).
-     * @param  initialCapacity  the initial capacity of the list
+     *
+     * @param initialCapacity the initial capacity of the list
      * @throws ExceptionInInitializerError if the specified initial capacity
-     * is negative
+     *                                     is negative
      */
 
     public MyArrayList(int initialCapacity) {
@@ -39,6 +40,7 @@ public class MyArrayList<E> implements MyList<E> {
             throw new ExceptionInInitializerError();
         }
     }
+
     /**
      * Constructs an empty array with an initial capacity of ten.
      */
@@ -47,9 +49,9 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
 
-
     /**
      * Setter for current number of existing array elements.
+     *
      * @return size
      */
     public int getSize() {
@@ -58,8 +60,9 @@ public class MyArrayList<E> implements MyList<E> {
 
     /**
      * Checking the entered parameter (index) to exit the array
+     *
      * @throws IndexOutOfBoundsException if the specified index
-     * is not valid
+     *                                   is not valid
      */
 
     private void chekIndex(int index) {
@@ -69,8 +72,9 @@ public class MyArrayList<E> implements MyList<E> {
 
     /**
      * Checking the entered parameter (index) to exit the array & index > 0 always
+     *
      * @throws IndexOutOfBoundsException if the specified index
-     * is not valid
+     *                                   is not valid
      */
 
     private void chekIndexInsertElement(int index) {
@@ -81,6 +85,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     /**
      * Resize array
+     *
      * @param newLength
      */
 
@@ -94,14 +99,16 @@ public class MyArrayList<E> implements MyList<E> {
      * Override method with array space separated
      * Return String
      */
-
+    @Override
     public String toString() {
-        String string = "";
+        String string = "[";
         for (int i = 0; i < data.length; i++) {
-            string += data[i];
-            string += " ";
+            if (data[i] != null) {
+                string += data[i];
+                string += " ";
+            }
         }
-        return string;
+        return string.replaceAll("\\s+$","")+"]";
     }
 
     /**
@@ -112,7 +119,8 @@ public class MyArrayList<E> implements MyList<E> {
      * parameter is greater than the current capacity, the array re-creates
      * Xia, memory is allocated 1.5 times + 1 element more.
      * Existing elements are transferred to the new array.
-     * @param capasity  & resize array
+     *
+     * @param capasity & resize array
      */
 
     private void ensureCapasity(int capasity) {
@@ -124,9 +132,9 @@ public class MyArrayList<E> implements MyList<E> {
      * Add an element to the end of the array. Must
      * be checking whether there is enough memory! If the memory is not
      * it is enough to increase the capacity of the data array
+     *
      * @param element
-     * @throws ClassCastException
-     * Return boolean
+     * @throws ClassCastException Return boolean
      */
 
     public boolean pushBack(E element) {
@@ -148,8 +156,8 @@ public class MyArrayList<E> implements MyList<E> {
      * Remove the first element from the array
      * Create a new array and copy the elements starting
      * from the second element putting it in place of the first element.
-     * @throws ClassCastException
-     * Return boolean
+     *
+     * @throws ClassCastException Return boolean
      */
 
     public boolean popFront() {
@@ -172,9 +180,9 @@ public class MyArrayList<E> implements MyList<E> {
      * from the first element and putting it in place of
      * the second element. The added element is put on the
      * first place in the array.
+     *
      * @param element
-     * @throws ClassCastException
-     * Return boolean
+     * @throws ClassCastException Return boolean
      */
 
     public boolean pushFront(E element) {
@@ -233,6 +241,7 @@ public class MyArrayList<E> implements MyList<E> {
         }
         return false;
     }
+
     /**
      * Removes the element finding on index position in this array.
      * Shifts any subsequent elements to the left (subtracts one from their
@@ -253,6 +262,7 @@ public class MyArrayList<E> implements MyList<E> {
 
         return true;
     }
+
     /**
      * Removes the first element whose value matches the parameter
      * Shifts any subsequent elements to the left (subtracts one from their
@@ -271,6 +281,7 @@ public class MyArrayList<E> implements MyList<E> {
         }
         return false;
     }
+
     /**
      * Removes all element whose value matches the parameter
      * Shifts any subsequent elements to the left (subtracts one from their
@@ -290,7 +301,6 @@ public class MyArrayList<E> implements MyList<E> {
     /**
      * Removes last element in array
      *
-     *
      * @return new array without this elements
      */
 
@@ -309,10 +319,10 @@ public class MyArrayList<E> implements MyList<E> {
         }
         size = 0;
     }
+
     /**
      * Returns true if this array contains no elements.
      *
-     * @return true if no elements
      * @return false if there is at least one elements
      */
     public boolean isEmphty() {
@@ -352,7 +362,6 @@ public class MyArrayList<E> implements MyList<E> {
     /**
      * Returns the index of the last occurrence of the specified element
      * in this array, or -1 if this array does not contain the element.
-     *
      */
 
     public int lastIndexOf(E element) {
@@ -369,7 +378,6 @@ public class MyArrayList<E> implements MyList<E> {
      * Reordering of elements in an array
      * on the opposite.
      * Return new array
-     *
      */
 
     public void reverse() {
@@ -381,9 +389,7 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
     /**
-     *
      * Random mixing elements of the array. Apply random.
-     *
      */
 
     public void shuffle() {
@@ -396,8 +402,17 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
+    public boolean equals(MyArrayList<E> newArray) {
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < newArray.getSize(); j++) {
+
+            }
+        }
+        return true;
+    }
+
     @Override
-public Iterator<E> iterator(){
+    public Iterator<E> iterator() {
         return new MyIterator<>(data);
-        }
-        }
+    }
+}
