@@ -11,14 +11,13 @@ public class MyArrayListTest {
 
     @Test
     public void toStringTest() throws Exception {
-       /* MyList<String> myArrayList = new MyArrayList<>(1);
+        MyArrayList<String> arrayList = new MyArrayList<>(1);
         String string = "It academy Step";
-        myArrayList.pushFront("Step");
-        myArrayList.pushFront("academy");
-        myArrayList.pushFront("It");
-        myArrayList.trimToSize();
-        Assert.assertTrue(string == myArrayList.toString());
-        //Assert.assertEquals("It academy Step" , myArrayList.toString());*/
+        arrayList.pushFront("Step");
+        arrayList.pushFront("academy");
+        arrayList.pushFront("It");
+
+        Assert.assertEquals(string, arrayList.toString());
     }
 
     @Test
@@ -74,7 +73,7 @@ public class MyArrayListTest {
         arrayList.removeAt(3);
 
         Assert.assertNotEquals(5, arrayList.getSize());
-}
+    }
 
     @Test
     public void removeTest() throws Exception {
@@ -155,8 +154,10 @@ public class MyArrayListTest {
 
     @Test
     public void trimToSizeTest() {
-        int initialCapacity = 15;
-        MyArrayList<Integer> arrayList = new MyArrayList<>(initialCapacity);
+
+        MyArrayList<Integer> arrayList = new MyArrayList<>();
+        int initialCapasity = arrayList.getCapacity();
+
         arrayList.pushBack(3);
         arrayList.pushBack(2);
         arrayList.pushBack(1);
@@ -165,6 +166,11 @@ public class MyArrayListTest {
         arrayList.pushBack(2);
 
         arrayList.trimToSize();
+
+        // Capacity after run metod trimToSize()
+        int capasity = arrayList.getCapacity();
+
+        Assert.assertTrue(capasity < initialCapasity);
     }
 
     @Test
@@ -190,11 +196,24 @@ public class MyArrayListTest {
         arrayList.pushBack(1);
         arrayList.pushBack(2);
 
-        Assert.assertTrue(arrayList.lastIndexOf(2) == arrayList.getSize() - 1);    }
+        Assert.assertTrue(arrayList.lastIndexOf(2) == arrayList.getSize() - 1);
+    }
 
     @Test
     public void reverseTest() {
+        MyArrayList<Integer> arrayList = new MyArrayList<>();
+        arrayList.pushBack(3);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
 
+        //Initialize the string we will expect after executing the method reverse
+        String string = "2 1 2 1 2 3";
+
+        arrayList.reverse();
+        Assert.assertEquals(string, arrayList.toString());
     }
 
     @Test

@@ -15,12 +15,12 @@ public class MyArrayList<E> implements MyList<E> {
     /**
      * Current array capacity. InitialCapacity.
      */
-    private static int capacity = 10;
+    private int capacity = 10;
 
     /**
      * Current number of existing array elements
      */
-    private  int size;
+    private int size;
 
 
     /**
@@ -101,14 +101,18 @@ public class MyArrayList<E> implements MyList<E> {
      */
     @Override
     public String toString() {
-        String string = "[";
+        String string = "";
         for (int i = 0; i < data.length; i++) {
             if (data[i] != null) {
                 string += data[i];
                 string += " ";
             }
         }
-        return string.replaceAll("\\s+$","")+"]";
+        if (string.isEmpty()) {
+            return "[" + string.replaceAll("\\s+$", "") + "]";
+        } else {
+            return string.replaceAll("\\s+$", "");
+        }
     }
 
     /**
@@ -124,8 +128,9 @@ public class MyArrayList<E> implements MyList<E> {
      */
 
     private void ensureCapasity(int capasity) {
-        if ((capasity - size) <= 0)
+        if ((capasity - size) <= 0) {
             resize((int) (capasity * 1.5) + 1);
+        }
     }
 
     /**
@@ -342,6 +347,7 @@ public class MyArrayList<E> implements MyList<E> {
     public void trimToSize() {
         if (size < data.length) {
             data = (size == 0) ? (E[]) new Object[]{} : Arrays.copyOf(data, size);
+            capacity=size;
         }
     }
 
@@ -409,6 +415,10 @@ public class MyArrayList<E> implements MyList<E> {
             }
         }
         return true;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     @Override
