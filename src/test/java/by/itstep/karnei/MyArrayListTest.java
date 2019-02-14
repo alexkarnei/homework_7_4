@@ -217,6 +217,18 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void shuffleTets() {
+    public void shuffleTest() {
+        MyArrayList<Integer> arrayList = new MyArrayList<>();
+        arrayList.pushBack(3);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+
+        System.out.println(arrayList.toString());
+
+        arrayList.shuffle();
+        System.out.println(arrayList.toString());
     }
 }
