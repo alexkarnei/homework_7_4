@@ -417,6 +417,7 @@ public class MyArrayList<E> implements MyList<E> {
         return true;
     }
 
+
     public int getCapacity() {
         return capacity;
     }

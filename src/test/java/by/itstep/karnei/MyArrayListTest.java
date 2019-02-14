@@ -149,7 +149,16 @@ public class MyArrayListTest {
     @Test
     public void isEmphtyTest() {
         MyArrayList<String> arrayList = new MyArrayList<>();
-        Assert.assertEquals(0, arrayList.getSize());
+
+        Assert.assertTrue(arrayList.isEmphty());
+
+        arrayList.pushBack("It");
+        arrayList.pushBack("academy");
+        arrayList.pushBack("Step");
+        arrayList.pushBack("Grodno");
+
+        arrayList.clear();
+        Assert.assertTrue( arrayList.isEmphty());
     }
 
     @Test
