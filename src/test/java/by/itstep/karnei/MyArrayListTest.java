@@ -158,7 +158,7 @@ public class MyArrayListTest {
         arrayList.pushBack("Grodno");
 
         arrayList.clear();
-        Assert.assertTrue( arrayList.isEmphty());
+        Assert.assertTrue(arrayList.isEmphty());
     }
 
     @Test
@@ -236,8 +236,33 @@ public class MyArrayListTest {
         arrayList.pushBack(2);
 
         System.out.println(arrayList.toString());
-
         arrayList.shuffle();
         System.out.println(arrayList.toString());
+    }
+
+    @Test
+    public void equalsTest() {
+        MyArrayList<Integer> arrayList = new MyArrayList<>();
+        arrayList.pushBack(3);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+        arrayList.trimToSize();
+
+        MyArrayList<Integer> newArray = new MyArrayList<>();
+
+        newArray.pushBack(3);
+        newArray.pushBack(2);
+        newArray.pushBack(1);
+        newArray.pushBack(2);
+        newArray.pushBack(1);
+        newArray.pushBack(2);
+        newArray.trimToSize();
+
+       Assert.assertTrue(arrayList.equals(newArray));
+       arrayList.shuffle();
+       Assert.assertFalse(arrayList.equals(newArray));
     }
 }

@@ -1,9 +1,6 @@
 package by.itstep.karnei;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 
 public class MyArrayList<E> implements MyList<E> {
 
@@ -347,7 +344,7 @@ public class MyArrayList<E> implements MyList<E> {
     public void trimToSize() {
         if (size < data.length) {
             data = (size == 0) ? (E[]) new Object[]{} : Arrays.copyOf(data, size);
-            capacity=size;
+            capacity = size;
         }
     }
 
@@ -408,19 +405,59 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
-    public boolean equals(MyArrayList<E> newArray) {
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < newArray.getSize(); j++) {
+    /**
+     * Pass an object to the method parameter.
+     * Check whether the object is a descendant of the class
+     * MyArrayList. Brings the object type to the type we entered.
+     * We make a comparison of the field number of elements, and the
+     * value of the elements of the array.
+     * @return boolean comparison result
+     *
+     */
 
-            }
-        }
-        return true;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MyArrayList)) return false;
+        MyArrayList<?> that = (MyArrayList<?>) o;
+        return getCapacity() == that.getCapacity() &&
+                getSize() == that.getSize() &&
+                Arrays.equals(data, that.data);
     }
 
+    /**
+     * Redefining method hashCode. Parameters for method
+     * hashCode are fields capacity & size
+     *
+     * @return result integer object code
+     */
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getCapacity(), getSize());
+        result = 31 * result + Arrays.hashCode(data);
+        return result;
+    }
+
+    public E getElement(int index){
+        chekIndex(index);
+
+    }
+    /**
+     * Getter for capacity
+     *
+     * @return capacity
+     */
 
     public int getCapacity() {
         return capacity;
     }
+
+    /**
+     * Override metod iterator
+     *
+     * @return new object Iterator
+     */
 
     @Override
     public Iterator<E> iterator() {
