@@ -411,8 +411,8 @@ public class MyArrayList<E> implements MyList<E> {
      * MyArrayList. Brings the object type to the type we entered.
      * We make a comparison of the field number of elements, and the
      * value of the elements of the array.
-     * @return boolean comparison result
      *
+     * @return boolean comparison result
      */
 
     @Override
@@ -439,10 +439,39 @@ public class MyArrayList<E> implements MyList<E> {
         return result;
     }
 
-    public E getElement(int index){
-        chekIndex(index);
+    /**
+     * The method takes as an argument the array index and
+     * returns a reference to the array element by index
+     *
+     * @param index
+     * @return element
+     */
 
+    public E getElementAt(int index) {
+        chekIndex(index);
+        E element = null;
+        for (int i = 0; i < data.length; i++) {
+            if (i == index) {
+                element = data[i];
+            }
+        }
+        return element;
     }
+
+    /**
+     * Override method  clone from class Object.
+     * Create a new class item MyArrayList
+     *
+     * @return link to copy Array
+     */
+
+    @Override
+    public MyArrayList<E> clone() throws CloneNotSupportedException {
+        MyArrayList<E> dataClone= new MyArrayList<E>();
+        dataClone.data = Arrays.copyOf(data, size);
+        return dataClone;
+    }
+
     /**
      * Getter for capacity
      *

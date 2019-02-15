@@ -235,9 +235,10 @@ public class MyArrayListTest {
         arrayList.pushBack(1);
         arrayList.pushBack(2);
 
-        System.out.println(arrayList.toString());
+        System.out.println("\nTask5 shuffle Test start\n");
+        System.out.println("Initial Array : "+arrayList.toString());
         arrayList.shuffle();
-        System.out.println(arrayList.toString());
+        System.out.println("Array after shuffle : "+arrayList.toString());
     }
 
     @Test
@@ -264,5 +265,38 @@ public class MyArrayListTest {
        Assert.assertTrue(arrayList.equals(newArray));
        arrayList.shuffle();
        Assert.assertFalse(arrayList.equals(newArray));
+    }
+
+    @Test
+    public void getElementTest(){
+        MyArrayList<Integer> arrayList = new MyArrayList<>();
+        arrayList.pushBack(3);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+
+        System.out.println("\nTask 6 getElementAt Test start\n");
+        System.out.println("Initial Array : "+arrayList.toString());
+        System.out.println("Array element under index : "+arrayList.getElementAt(2));
+
+    }
+
+    @Test
+    public void cloneTest() throws CloneNotSupportedException {
+        MyArrayList<Integer> arrayList = new MyArrayList<>();
+        arrayList.pushBack(3);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+        arrayList.pushBack(1);
+        arrayList.pushBack(2);
+
+        System.out.println("\nTask 6 clone Test start\n");
+        System.out.println("Initial Array : "+arrayList.toString());
+        MyArrayList<Integer> data = arrayList.clone();
+        System.out.println("Clone initial Array : "+ data);
+
     }
 }

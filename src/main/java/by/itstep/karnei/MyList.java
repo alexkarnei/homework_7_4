@@ -38,4 +38,8 @@ public interface MyList<E> extends Iterable<E> {
 
     boolean equals(Object obj);
 
+    Object clone() throws CloneNotSupportedException;
+
+    E getElementAt(int index);
+
 }
