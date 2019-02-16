@@ -235,7 +235,7 @@ public class MyArrayListTest {
         arrayList.pushBack(1);
         arrayList.pushBack(2);
 
-        System.out.println("\nTask5 shuffle Test start\n");
+        System.out.println("\nTask 5 shuffle Test start\n");
         System.out.println("Initial Array : "+arrayList.toString());
         arrayList.shuffle();
         System.out.println("Array after shuffle : "+arrayList.toString());

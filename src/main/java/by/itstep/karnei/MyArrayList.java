@@ -2,7 +2,7 @@ package by.itstep.karnei;
 
 import java.util.*;
 
-public class MyArrayList<E> implements MyList<E> {
+public class MyArrayList<E> implements MyList<E>,Cloneable {
 
     /**
      * Initialize the encapsulated array.
@@ -121,12 +121,12 @@ public class MyArrayList<E> implements MyList<E> {
      * Xia, memory is allocated 1.5 times + 1 element more.
      * Existing elements are transferred to the new array.
      *
-     * @param capasity & resize array
+     * @param capacity & resize array
      */
 
-    private void ensureCapasity(int capasity) {
-        if ((capasity - size) <= 0) {
-            resize((int) (capasity * 1.5) + 1);
+    private void ensureCapaсity(int capacity) {
+        if ((capacity - size) <= 0) {
+            resize((int) (capacity * 1.5) + 1);
         }
     }
 
@@ -142,7 +142,7 @@ public class MyArrayList<E> implements MyList<E> {
     public boolean pushBack(E element) {
         try {
             if (size > data.length - 1) {
-                ensureCapasity(data.length);
+                ensureCapaсity(data.length);
                 data[size++] = element;
             } else {
                 data[size++] = element;
@@ -189,7 +189,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     public boolean pushFront(E element) {
         try {
-            ensureCapasity(data.length);
+            ensureCapaсity(data.length);
             E[] temp = data;
             data = (E[]) new Object[temp.length];
             System.arraycopy(temp, 0, data, 1, temp.length - 1);
@@ -220,7 +220,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     public boolean insert(E element, int index) {
         chekIndexInsertElement(index);
-        ensureCapasity(data.length);
+        ensureCapaсity(data.length);
         try {
             E[] temp = data;
             if (index + 1 <= data.length) {
@@ -466,7 +466,7 @@ public class MyArrayList<E> implements MyList<E> {
      */
 
     @Override
-    public MyArrayList<E> clone() throws CloneNotSupportedException {
+    public MyArrayList<E> clone(){
         MyArrayList<E> dataClone= new MyArrayList<E>();
         dataClone.data = Arrays.copyOf(data, size);
         return dataClone;
