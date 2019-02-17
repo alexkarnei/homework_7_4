@@ -47,7 +47,7 @@ public class MyArrayList<E> implements MyList<E>,Cloneable {
 
 
     /**
-     * Setter for current number of existing array elements.
+     * Getter for current number of existing array elements.
      *
      * @return size
      */
